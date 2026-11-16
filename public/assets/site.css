@@ -1063,3 +1063,12 @@ svg.i { width:1em; height:1em; fill:none; stroke:currentColor; stroke-width:2; s
 @media (max-width:900px) { .ts-grid { grid-template-columns:minmax(0,1fr); } .ts-nums { grid-template-columns:1fr 1fr; } .ts-num { flex-direction:column; align-items:flex-start; gap:10px; } }
 @media (max-width:520px) { .ts-nums { grid-template-columns:minmax(0,1fr); } .ts-num { flex-direction:row; align-items:center; } }
 @media (prefers-reduced-motion:reduce) { .ts-row { animation:none; } }
+
+/* testimonios: una sola cifra, en vertical */
+.ts-grid > div:last-child { display:flex; flex-direction:column; }
+.ts-nums.one { flex:1; }
+.ts-nums.one .ts-num { height:100%; flex-direction:column; align-items:flex-start; justify-content:space-between; gap:18px; padding:clamp(26px,3vw,44px); }
+.ts-nums.one .ts-num .n { font-size:clamp(5rem,9vw,8.6rem); }
+.ts-nums.one .ts-num p:not(.n) { font-size:clamp(17px,1.5vw,21px); font-weight:800; max-width:16rem; }
+@media (max-width:900px) { .ts-nums.one { grid-template-columns:minmax(0,1fr); } }
+@media (max-width:520px) { .ts-nums.one .ts-num { flex-direction:column; align-items:flex-start; } }
