@@ -1,28 +1,28 @@
-<header class="phead"><div class="wrap"><p class="eyebrow"><i></i>Programmes</p><h1>A programme tailored <em>to your school</em>.</h1><p class="lead">Four programmes you can combine to suit your year groups and your hours.</p></div></header>
-<section class="sec" style="padding-top:0"><div class="wrap"><div class="prog-cards">
-<div class="prgc" style="background:#e8eef8"><i style="background:#0B3064"></i><b>Adult life</b><span>Salary, budgeting, contracts and taxes.</span></div>
-<div class="prgc" style="background:#eef2fa"><i style="background:#5574A7"></i><b>Investing</b><span>Saving, risk and markets, with the simulator.</span></div>
-<div class="prgc" style="background:#fff7d6"><i style="background:#F5C518"></i><b>Entrepreneurship</b><span>From idea to plan, with real numbers.</span></div>
-<div class="prgc" style="background:#f1f3f7"><i style="background:#C8D0DD"></i><b>Economics</b><span>The syllabus, with real practice.</span></div>
+<header class="phead"><div class="wrap"><p class="eyebrow"><i></i>Programmes</p><h1>A programme tailored <em>to your school</em>.</h1><p class="lead">Five programmes. You choose the level, age and length, and we adapt it to your country.</p></div></header>
+<section class="sec" style="padding-top:0"><div class="wrap"><div class="prog-cards five">
+<div class="prgc" style="background:#f4f6fa"><i style="background:#0B3064"></i><b>Adult life</b><span>Salary, budgeting, contracts and taxes.</span></div>
+<div class="prgc" style="background:#f4f6fa"><i style="background:#5574A7"></i><b>Investing</b><span>Saving, risk and markets, with the simulator.</span></div>
+<div class="prgc" style="background:#f4f6fa"><i style="background:#F5C518"></i><b>Entrepreneurship</b><span>From idea to plan, with real numbers.</span></div>
+<div class="prgc" style="background:#f4f6fa"><i style="background:#8F9EB7"></i><b>Economics</b><span>The syllabus, with real practice.</span></div>
+<div class="prgc" style="background:#f4f6fa"><i style="background:#114076"></i><b>General</b><span>The essentials of them all, the same in any country.</span></div>
 </div></div></section>
+<!-- ============ MONTA TU PROGRAMA ============ -->
 <section class="sec" id="colegio">
   <div class="stage paper" style="padding:clamp(70px,10vh,110px) 0">
     <div class="wrap">
-      <p class="eyebrow"><i></i>Build your term</p><h2 class="h2" style="font-size:clamp(2rem,3.6vw,3.4rem)">Choose where and how many hours.<br><span>We take care of the rest.</span></h2>
-      <div class="presets" id="presets">
-        <button class="preset" data-h="1" data-m="vida"><b>Form time</b><small>1 h/week · Adult life</small></button>
-        <button class="preset on" data-h="2" data-m="vida,inv,emp"><b>Elective subject</b><small>2 h/week · 3 programmes</small></button>
-        <button class="preset" data-h="2" data-m="eco,inv"><b>Economics subject</b><small>2 h/week · syllabus + investing</small></button>
-        <button class="preset" data-h="2" data-m="emp"><b>Entrepreneurship</b><small>2 h/week · from idea to plan</small></button>
-      </div>
+      <p class="eyebrow"><i></i>Build your programme</p><h2 class="h2" style="font-size:clamp(2rem,3.6vw,3.4rem)">Choose the programme, level and hours.<br><span>We take care of the rest.</span></h2>
+      <div class="presets" id="presets"><button class="preset" data-m="vida" data-n="ini" data-e="p" data-h="12"><b>Tutor time</b><small>12 h · Adult life</small></button><button class="preset on" data-m="inv" data-n="ini" data-e="m" data-h="36"><b>Elective subject</b><small>36 h · Investing</small></button><button class="preset" data-m="eco" data-n="ini" data-e="m" data-h="24"><b>Economics subject</b><small>24 h · Economics</small></button><button class="preset" data-m="inv" data-n="ava" data-e="m" data-h="24"><b>Second year</b><small>24 h · Advanced investing</small></button></div>
       <div class="prog-ui">
         <div class="ctl">
-          <label>HOURS PER WEEK</label><div class="row" id="cHours"><button class="chip" data-v="1">1 h</button><button class="chip on" data-v="2">2 h</button></div>
-          <label>PROGRAMMES</label><div class="mods" id="cMods"></div>
+          <label>PROGRAMME</label><div class="mods" id="cMods"></div>
+          <label>LEVEL</label><div class="row" id="cLevel"><button class="chip on" data-v="ini">Beginner</button><button class="chip" data-v="ava">Advanced</button></div>
+          <label>AGE</label><div class="row" id="cAge"><button class="chip" data-v="p">Ages 14-15</button><button class="chip on" data-v="m">Ages 16-17</button></div>
+          <label>LENGTH</label><div class="row" id="cHours"><button class="chip" data-v="12">12 h</button><button class="chip" data-v="24">24 h</button><button class="chip on" data-v="36">36 h</button></div>
         </div>
-        <div class="calendar"><div class="cal-head"><b id="calT">First term</b><span id="calS"></span></div><div class="weeks" id="weeks"></div></div>
+        <div class="calendar"><div class="cal-head"><b id="calT"></b><span id="calS"></span></div><div class="layers" id="layers"></div><p class="cal-note" id="calN"></p><p class="cal-note">Adapted to your country: currency, examples and the way people speak.</p></div>
       </div>
     </div>
   </div>
 </section>
+
 <section class="sec"><div class="stage navy dark cta-band"><h2>So they decide<br>with <em>judgement</em>.</h2><p>We'll show you Finomik in 20 minutes, with a case from your school.</p><div class="ctas"><a class="btn btn-gold" href="{{url:demo}}">Book a demo</a><a class="btn btn-ghost" href="{{url:porque}}">Why Finomik</a></div></div></section>

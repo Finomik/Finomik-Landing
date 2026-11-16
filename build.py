@@ -50,10 +50,10 @@ META = {
               "en": ("Finomik · Financial education for schools", "Finomik prepares your students for the decisions of adult life with challenges, simulation and AI. And you see it all from your dashboard.")},
     "alumnos": {"es": ("Para alumnos · Finomik", "Así aprenden tus alumnos en Finomik: su camino, píldoras, retos, simulador de inversión, actualidad y avatar. Con Finny, su tutor con IA."),
                 "en": ("For students · Finomik", "How your students learn with Finomik: their path, short lessons, challenges, investment simulator, news and avatar. With Finny, their AI tutor.")},
-    "profesores": {"es": ("Para profesores · Finomik", "Da tú la clase o deja que Finomik explique. Sigue a cada alumno, decide qué contenido ve tu clase, escribe mensajes y descarga exámenes en Word."),
-                   "en": ("For teachers · Finomik", "Teach the class yourself or let Finomik explain. Track every student, decide what your class sees, send messages and download exams in Word.")},
-    "programas": {"es": ("Programas · Finomik", "Cuatro programas de educación financiera para Secundaria (Vida adulta, Inversión, Emprendimiento y Economía) que se adaptan a vuestras horas."),
-                  "en": ("Programmes · Finomik", "Four financial education programmes for secondary schools (Adult life, Investing, Entrepreneurship and Economics) that fit your timetable.")},
+    "profesores": {"es": ("Para profesores · Finomik", "Da tú la clase o deja que Finomik explique. Sigue a cada alumno, decide qué contenido ve tu clase y descarga exámenes en Word."),
+                   "en": ("For teachers · Finomik", "Teach the class yourself or let Finomik explain. Track every student, decide what your class sees and download exams in Word.")},
+    "programas": {"es": ("Programas · Finomik", "Cinco programas de educación financiera para Secundaria (Vida adulta, Inversión, Emprendimiento, Economía y General), de 12, 24 o 36 horas, adaptados a tu país."),
+                  "en": ("Programmes · Finomik", "Five financial education programmes for secondary schools (Adult life, Investing, Entrepreneurship, Economics and General), of 12, 24 or 36 hours, adapted to your country.")},
     "porque": {"es": ("Por qué Finomik · Educación financiera para colegios", "Por qué la educación financiera importa en el colegio y en qué se diferencia Finomik de un libro de texto, una charla o una app."),
                "en": ("Why Finomik · Financial education for schools", "Why financial education matters at school, and how Finomik differs from a textbook, a one-off talk or an app.")},
     "blog": {"es": ("Blog de educación financiera · Finomik", "Ideas para el aula, datos sobre educación financiera y novedades de Finomik."),
@@ -62,8 +62,8 @@ META = {
              "en": ("Book a demo · Finomik", "We'll show you Finomik in 20 minutes with a case from your school. No commitment.")},
     "bancos": {"es": ("Finomik para entidades financieras", "Finomik integra la educación financiera en la relación entre el banco y sus clientes: clientes mejor educados, decisiones más sólidas."),
                "en": ("Finomik for financial institutions", "Finomik brings financial education into the relationship between a bank and its clients: better-educated clients, stronger decisions.")},
-    "nosotros": {"es": ("Sobre nosotros · Finomik", "Finomik es una plataforma de educación financiera para colegios. Enseñamos a decidir."),
-                 "en": ("About us · Finomik", "Finomik is a financial education platform for schools. We teach how to decide.")},
+    "nosotros": {"es": ("Nosotros · Finomik", "Quiénes somos, nuestra historia, misión y visión. Finomik nació para que ningún joven llegue a la vida adulta sin saber decidir sobre su dinero."),
+                 "en": ("About us · Finomik", "Who we are, our story, mission and vision. Finomik was born so that no young person reaches adult life without knowing how to make decisions about money.")},
     "avisolegal": {"es": ("Aviso legal · Finomik", "Aviso legal y condiciones de uso del sitio web de Finomik."),
                    "en": ("Legal notice · Finomik", "Legal notice and terms of use of the Finomik website.")},
     "privacidad": {"es": ("Política de privacidad · Finomik", "Cómo trata Finomik los datos personales en su sitio web."),
@@ -73,7 +73,7 @@ META = {
 }
 
 T = {  # textos comunes
-    "es": {"nav": [("alumnos", "Alumnos"), ("profesores", "Profesores"), ("programas", "Programas"), ("porque", "Por qué Finomik"), ("blog", "Blog")],
+    "es": {"nav": [("alumnos", "Alumnos"), ("profesores", "Profesores"), ("programas", "Programas"), ("porque", "Por qué Finomik"), ("nosotros", "Nosotros")],
            "demo": "Pide una demo", "home": "Inicio", "menu": "Menú", "close": "Cerrar", "main": "Principal", "other": "English", "logo": "Finomik, inicio",
            "tag": "Educación financiera para colegios.", "cols": [("PLATAFORMA", [("alumnos", "Para alumnos"), ("profesores", "Para profesores"), ("programas", "Programas")]),
                ("POR QUÉ FINOMIK", [("porque", "El problema"), ("porque#diferencia", "La diferencia"), ("porque#faq", "Preguntas frecuentes")]),
@@ -81,7 +81,7 @@ T = {  # textos comunes
                ("EMPRESA", [("nosotros", "Sobre nosotros"), ("demo", "Contacto"), ("bancos", "Entidades financieras"), (LINKEDIN, "LinkedIn")])],
            "legal": [("avisolegal", "Aviso legal"), ("privacidad", "Privacidad"), ("cookies", "Cookies")],
            "read": "de lectura", "readmore": "Leer →", "all": "Todas", "back": "← Volver al blog", "source": "Fuente", "keep": "Sigue leyendo", "locale": "es_ES"},
-    "en": {"nav": [("alumnos", "Students"), ("profesores", "Teachers"), ("programas", "Programmes"), ("porque", "Why Finomik"), ("blog", "Blog")],
+    "en": {"nav": [("alumnos", "Students"), ("profesores", "Teachers"), ("programas", "Programmes"), ("porque", "Why Finomik"), ("nosotros", "About us")],
            "demo": "Book a demo", "home": "Home", "menu": "Menu", "close": "Close", "main": "Main", "other": "Español", "logo": "Finomik, home",
            "tag": "Financial education for schools.", "cols": [("PLATFORM", [("alumnos", "For students"), ("profesores", "For teachers"), ("programas", "Programmes")]),
                ("WHY FINOMIK", [("porque", "The problem"), ("porque#diferencia", "The difference"), ("porque#faq", "FAQ")]),
@@ -163,7 +163,7 @@ def nav(lang, cur, other_url, hide_demo=False):
     ot = "en" if lang == "es" else "es"
     langs = (f'<a class="on" href="#" aria-current="true">ES</a><a href="{other_url}" hreflang="en">EN</a>' if lang == "es"
              else f'<a href="{other_url}" hreflang="es">ES</a><a class="on" href="#" aria-current="true">EN</a>')
-    mm = "".join(f'<li><a href="{url(k, lang)}">{n}</a></li>' for k, n in [("index", t["home"])] + t["nav"])
+    mm = "".join(f'<li><a href="{url(k, lang)}">{n}</a></li>' for k, n in [("index", t["home"])] + t["nav"] + [("blog", "Blog")])
     skip = "Saltar al contenido" if lang == "es" else "Skip to content"
     demo_btn = "" if hide_demo else f'<a class="btn btn-gold" href="{url('demo', lang)}">{t['demo']}</a>'
     return f"""<body>
@@ -267,14 +267,14 @@ for lang in LANGS:
     body = s[s.index("<body>") + 6: s.index('<script src="https://cdnjs')]
     inline = re.search(r"<script>\s*gsap\.registerPlugin.*?</script>", s, re.S).group(0)
     body = re.sub(r'<p class="tag">.*?</p>\s*', "", body, flags=re.S)
-    names = {"index": "index", "alumnos": "alumnos", "profesores": "profesores", "programas": "programas", "blog": "blog", "demo": "demo", "por-que-finomik": "porque"}
+    names = {"index": "index", "alumnos": "alumnos", "profesores": "profesores", "programas": "programas", "blog": "blog", "demo": "demo", "por-que-finomik": "porque", "sobre-nosotros": "nosotros"}
     other = "en" if lang == "es" else "es"
     body = re.sub(r'href="(?:\.\./)*(?:sitio/)?(?:en/)?([a-z-]+)\.html(#[a-z-]+)?"( hreflang="(es|en)")?',
                   lambda m: f'href="{url(names[m.group(1)] + (m.group(2) or ""), m.group(4) or lang)}"{m.group(3) or ""}', body)
     body = body.replace('src="../../media/', 'src="/media/').replace('src="media/', 'src="/media/')
     t = T[lang]
     # menú para móvil (esta página no usa site.css)
-    mm = "".join(f'<li><a href="{url(k, lang)}">{n}</a></li>' for k, n in [("index", t["home"])] + t["nav"] + [("demo", t["demo"])])
+    mm = "".join(f'<li><a href="{url(k, lang)}">{n}</a></li>' for k, n in [("index", t["home"])] + t["nav"] + [("blog", "Blog"), ("demo", t["demo"])])
     body = re.sub(r'(<a class="btn btn-gold"[^>]*>[^<]*</a></div>\s*</nav>)', lambda m: m.group(1).replace('</a></div>', f'</a><button class="pq-burger" id="pqBurger" aria-label="{t["menu"]}">☰</button></div>', 1)
                   + f'\n<div class="pq-menu" id="pqMenu" role="dialog" aria-label="{t["menu"]}"><img src="/media/logo-azul.png" alt="Finomik" width="88" height="28" style="height:28px;width:auto"><button class="pq-x" id="pqClose" aria-label="{t["close"]}">✕</button><ul>{mm}</ul><a class="pq-lang" href="{url("porque", other)}" hreflang="{other}">{t["other"]}</a></div>', body, count=1)
     legal = "".join(f'<a href="{url(k, lang)}">{n}</a>' for k, n in [("index", t["home"]), ("nosotros", dict(t["cols"][3][1])["nosotros"]), ("blog", "Blog")] + t["legal"])

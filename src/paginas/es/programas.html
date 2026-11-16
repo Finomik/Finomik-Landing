@@ -1,30 +1,26 @@
-<header class="phead"><div class="wrap"><p class="eyebrow"><i></i>Programas</p><h1>Un programa a la medida <em>de tu colegio</em>.</h1><p class="lead">Cuatro programas que se combinan según vuestro curso y vuestras horas.</p></div></header>
-<section class="sec" style="padding-top:0"><div class="wrap"><div class="prog-cards">
-<div class="prgc" style="background:#e8eef8"><i style="background:#0B3064"></i><b>Vida adulta</b><span>Sueldo, presupuesto, contratos e impuestos.</span></div>
-<div class="prgc" style="background:#eef2fa"><i style="background:#5574A7"></i><b>Inversión</b><span>Ahorro, riesgo y mercados, con el simulador.</span></div>
-<div class="prgc" style="background:#fff7d6"><i style="background:#F5C518"></i><b>Emprendimiento</b><span>De la idea al plan, con números.</span></div>
-<div class="prgc" style="background:#f1f3f7"><i style="background:#C8D0DD"></i><b>Economía</b><span>El temario, con práctica real.</span></div>
+<header class="phead"><div class="wrap"><p class="eyebrow"><i></i>Programas</p><h1>Un programa a la medida <em>de tu colegio</em>.</h1><p class="lead">Cinco programas. Eliges nivel, edad y duración, y lo adaptamos a tu país.</p></div></header>
+<section class="sec" style="padding-top:0"><div class="wrap"><div class="prog-cards five">
+<div class="prgc" style="background:#f4f6fa"><i style="background:#0B3064"></i><b>Vida adulta</b><span>Sueldo, presupuesto, contratos e impuestos.</span></div>
+<div class="prgc" style="background:#f4f6fa"><i style="background:#5574A7"></i><b>Inversión</b><span>Ahorro, riesgo y mercados, con el simulador.</span></div>
+<div class="prgc" style="background:#f4f6fa"><i style="background:#F5C518"></i><b>Emprendimiento</b><span>De la idea al plan, con números.</span></div>
+<div class="prgc" style="background:#f4f6fa"><i style="background:#8F9EB7"></i><b>Economía</b><span>El temario, con práctica real.</span></div>
+<div class="prgc" style="background:#f4f6fa"><i style="background:#114076"></i><b>General</b><span>Lo esencial de todos, igual en cualquier país.</span></div>
 </div></div></section>
-<!-- ============ 6 · TU COLEGIO ============ -->
+<!-- ============ MONTA TU PROGRAMA ============ -->
 <section class="sec" id="colegio">
   <div class="stage paper" style="padding:clamp(70px,10vh,110px) 0">
     <div class="wrap">
-      
-      <p class="eyebrow"><i></i>Monta tu trimestre</p><h2 class="h2" style="font-size:clamp(2rem,3.6vw,3.4rem)">Elige dónde y cuántas horas.<br><span>El resto lo hacemos nosotros.</span></h2>
-      <div class="presets" id="presets">
-        <button class="preset" data-h="1" data-m="vida"><b>Tutoría</b><small>1 h/semana · Vida adulta</small></button>
-        <button class="preset on" data-h="2" data-m="vida,inv,emp"><b>Materia optativa</b><small>2 h/semana · 3 programas</small></button>
-        <button class="preset" data-h="2" data-m="eco,inv"><b>Asignatura de Economía</b><small>2 h/semana · temario + inversión</small></button>
-        <button class="preset" data-h="2" data-m="emp"><b>Emprendimiento</b><small>2 h/semana · de la idea al plan</small></button>
-      </div>
+      <p class="eyebrow"><i></i>Monta tu programa</p><h2 class="h2" style="font-size:clamp(2rem,3.6vw,3.4rem)">Elige programa, nivel y horas.<br><span>El resto lo hacemos nosotros.</span></h2>
+      <div class="presets" id="presets"><button class="preset" data-m="vida" data-n="ini" data-e="p" data-h="12"><b>Tutoría</b><small>12 h · Vida adulta</small></button><button class="preset on" data-m="inv" data-n="ini" data-e="m" data-h="36"><b>Materia optativa</b><small>36 h · Inversión</small></button><button class="preset" data-m="eco" data-n="ini" data-e="m" data-h="24"><b>Asignatura de Economía</b><small>24 h · Economía</small></button><button class="preset" data-m="inv" data-n="ava" data-e="m" data-h="24"><b>Segundo año</b><small>24 h · Inversión avanzado</small></button></div>
       <div class="prog-ui">
         <div class="ctl">
-          <label>HORAS A LA SEMANA</label><div class="row" id="cHours"><button class="chip" data-v="1">1 h</button><button class="chip on" data-v="2">2 h</button></div>
-          <label>PROGRAMAS</label><div class="mods" id="cMods"></div>
+          <label>PROGRAMA</label><div class="mods" id="cMods"></div>
+          <label>NIVEL</label><div class="row" id="cLevel"><button class="chip on" data-v="ini">Inicial</button><button class="chip" data-v="ava">Avanzado</button></div>
+          <label>EDAD</label><div class="row" id="cAge"><button class="chip" data-v="p">14-15 años</button><button class="chip on" data-v="m">16-17 años</button></div>
+          <label>DURACIÓN</label><div class="row" id="cHours"><button class="chip" data-v="12">12 h</button><button class="chip" data-v="24">24 h</button><button class="chip on" data-v="36">36 h</button></div>
         </div>
-        <div class="calendar"><div class="cal-head"><b id="calT">Primer trimestre</b><span id="calS"></span></div><div class="weeks" id="weeks"></div></div>
+        <div class="calendar"><div class="cal-head"><b id="calT"></b><span id="calS"></span></div><div class="layers" id="layers"></div><p class="cal-note" id="calN"></p><p class="cal-note">Adaptado a tu país: moneda, ejemplos y forma de hablar.</p></div>
       </div>
-      
     </div>
   </div>
 </section>

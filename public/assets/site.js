@@ -333,21 +333,7 @@ $('#solTg').onclick = () => $('#solTg').classList.toggle('off');
 const countQ = () => { const n = $$('#cks .ck.on').reduce((s, c) => s + +c.dataset.n, 0); const o = { v: +$('#qN').textContent }; gsap.to(o, { v: n, duration: .5, onUpdate: () => ($('#qN').textContent = Math.round(o.v)) }); };
 $$('#cks .ck').forEach((c) => c.addEventListener('click', () => { c.classList.toggle('on'); countQ(); }));
 $('#dl').onclick = () => { if (+$('#qN').textContent === 0) { toast($('#toastE'), tx('Elige al menos un módulo', 'Choose at least one module')); return; } gsap.fromTo('#docEl i', { scaleX: 0 }, { scaleX: 1, duration: .3, stagger: .12, ease: 'power2.out' }); gsap.fromTo('#docEl', { y: 10 }, { y: 0, duration: .6, ease: 'back.out(2)' }); setTimeout(() => toast($('#toastE'), tx(`<b>Examen_Presupuesto.docx</b> listo · ${$('#qN').textContent} preguntas${$('#solTg').classList.contains('off') ? '' : ' + soluciones'}`, `<b>Budgeting_Exam.docx</b> ready · ${$('#qN').textContent} questions${$('#solTg').classList.contains('off') ? '' : ' + answers'}`)), 900); };
-let typed = false;
-function typeMsg() {
-  if (typed) return; typed = true;
-  const subj = tx('Reto de la semana: tu primer presupuesto', 'Challenge of the week: your first budget'), body = tx('Hola a todos. Esta semana cada uno hará su primer presupuesto con la regla 50/30/20. El viernes lo comentamos en clase. ¡Ánimo!', 'Hi everyone. This week you will each make your first budget with the 50/30/20 rule. We will discuss it in class on Friday. Good luck!');
-  let i = 0, j = 0;
-  const a = setInterval(() => { $('#mSubj').textContent = subj.slice(0, ++i); if (i >= subj.length) { clearInterval(a); const b = setInterval(() => { $('#mBody').textContent = body.slice(0, ++j); if (j >= body.length) clearInterval(b); }, 18); } }, 28);
-}
-$('#mSend').onclick = () => {
-  const s = $('#mSubj').textContent || tx('Mensaje a la clase', 'Message to the class');
-  const it = document.createElement('div'); it.innerHTML = `${s}<small>${tx('Ahora · 25 alumnos', 'Now · 25 students')}</small>`; $('#sent').prepend(it);
-  gsap.from(it, { x: -40, opacity: 0, duration: .6, ease: 'expo.out' });
-  toast($('#toastM'), tx('Enviado a <b>Clase 4B</b> · 25 alumnos lo verán en su buzón', 'Sent to <b>Class 4B</b> · 25 students will see it in their inbox'));
-  $('#mSubj').textContent = ''; $('#mBody').textContent = ''; typed = false; setTimeout(typeMsg, 2500);
-};
-const TABCOPY = tx(['<b>Seguimiento.</b> Quién avanza, quién se atasca y dónde. Pulsa un alumno para ver su ficha.', '<b>Intervención.</b> Tú decides qué ve tu clase. Apaga un interruptor y mira cómo cambia lo que verá el alumno.', '<b>Mensajes.</b> Escribe a toda la clase en un momento. Lo verán en su buzón.', '<b>Exámenes.</b> Elige módulos y descarga un examen en Word, con soluciones si quieres.'], ['<b>Tracking.</b> Who is moving ahead, who is stuck and where. Click a student to see their profile.', '<b>Control.</b> You decide what your class sees. Switch something off and watch how the student view changes.', '<b>Messages.</b> Write to the whole class in seconds. They will see it in their inbox.', '<b>Exams.</b> Pick modules and download an exam in Word, with answers if you want.']);
+const TABCOPY = tx(['<b>Seguimiento.</b> Quién avanza, quién se atasca y dónde. Pulsa un alumno para ver su ficha.', '<b>Intervención.</b> Tú decides qué ve tu clase. Apaga un interruptor y mira cómo cambia lo que verá el alumno.', '<b>Exámenes.</b> Elige módulos y descarga un examen en Word, con soluciones si quieres.'], ['<b>Tracking.</b> Who is moving ahead, who is stuck and where. Click a student to see their profile.', '<b>Control.</b> You decide what your class sees. Switch something off and watch how the student view changes.', '<b>Exams.</b> Pick modules and download an exam in Word, with answers if you want.']);
 const tabs = $$('#tabsT button');
 const tourT = makeTour({
   root: $('#devT'), steps: tabs, screens: $$('#devT .screen'), side: $$('#devT .side .sl'), auto: 8000,
@@ -355,42 +341,43 @@ const tourT = makeTour({
     $('#tabCopy').innerHTML = TABCOPY[i];
     if (i === 0) $$('#devT .cnt').forEach((c) => { const o = { v: 0 }; gsap.to(o, { v: +c.dataset.v, duration: 1.4, ease: 'expo.out', delay: .3, onUpdate: () => (c.textContent = Math.round(o.v)) }); });
     if (i === 0) gsap.fromTo('#studs .tr i', { scaleX: 0, transformOrigin: 'left' }, { scaleX: 1, duration: 1.2, ease: 'expo.out', stagger: .06, delay: .3 });
-    if (i === 2) setTimeout(typeMsg, 600);
   },
 });
 tabs.forEach((b, k) => b.addEventListener('click', () => tourT.show(k, true)));
 
 }
 if ($('#presets')) {
-/* ---------- 6 · tu colegio ---------- */
+/* ---------- programas: programa, nivel, edad y horas (capas de 12 h) ---------- */
 (() => {
-  const MODS = { vida: [tx('Vida adulta', 'Adult life'), '#0B3064', '#fff'], inv: [tx('Inversión', 'Investing'), '#5574A7', '#fff'], emp: [tx('Emprendimiento', 'Entrepreneurship'), '#F5C518', '#0B3064'], eco: [tx('Economía', 'Economics'), '#C8D0DD', '#0B3064'] };
-  const st = { stage: 'eso', h: 2, mods: ['vida', 'inv', 'emp'] };
-  const box = $('#cMods');
-  Object.entries(MODS).forEach(([k, m]) => { const b = document.createElement('button'); b.className = 'mod'; b.dataset.k = k; b.innerHTML = `<i style="background:${m[1]}"></i>${m[0]}`; b.onclick = () => { if (b.classList.contains('lock')) return; st.mods = st.mods.includes(k) ? st.mods.filter((x) => x !== k) : [...st.mods, k]; if (!st.mods.length) st.mods = [k]; clearPreset(); build(); }; box.append(b); });
+  const MODS = { vida: [tx('Vida adulta', 'Adult life'), '#0B3064'], inv: [tx('Inversión', 'Investing'), '#5574A7'], emp: [tx('Emprendimiento', 'Entrepreneurship'), '#F5C518'], eco: [tx('Economía', 'Economics'), '#8F9EB7'] };
+  const CAPAS = [[tx('Núcleo', 'Core'), tx('lo imprescindible', 'the essentials')], [tx('Ampliación', 'Extension'), tx('más casos y práctica', 'more cases and practice')], [tx('Profundización', 'Deep dive'), tx('para ir más allá', 'to go further')]];
+  const st = { m: 'inv', n: 'ini', e: 'm', h: 36 };
+  const box = $('#cMods'), lay = $('#layers');
+  Object.entries(MODS).forEach(([k, m]) => { const b = document.createElement('button'); b.className = 'mod'; b.dataset.k = k; b.innerHTML = `<i style="background:${m[1]}"></i>${m[0]}`; b.onclick = () => { st.m = k; clearPreset(); build(); }; box.append(b); });
+  CAPAS.forEach((c) => lay.insertAdjacentHTML('beforeend', `<div class="layer"><div class="ln"><b>${c[0]}</b><small>+12 h · ${c[1]}</small></div><div class="cells">${'<i></i>'.repeat(12)}</div></div>`));
   const clearPreset = () => $$('#presets .preset').forEach((p) => p.classList.remove('on'));
-  function sync() {
-      $$('#cHours .chip').forEach((b) => b.classList.toggle('on', +b.dataset.v === st.h));
-    if (!st.mods.length) st.mods = ['vida'];
-    $$('#cMods .mod').forEach((b) => { const lock = false; b.classList.toggle('lock', lock); b.classList.toggle('off', !st.mods.includes(b.dataset.k)); b.title = lock ? 'Solo para los últimos cursos' : ''; });
+  const chips = (sel, v) => $$(sel + ' .chip').forEach((b) => b.classList.toggle('on', b.dataset.v === String(v)));
+  function build(anim = true) {
+    if (st.n === 'ava') st.e = 'm';
+    $$('#cMods .mod').forEach((b) => b.classList.toggle('off', b.dataset.k !== st.m));
+    chips('#cLevel', st.n); chips('#cAge', st.e); chips('#cHours', st.h);
+    const young = $('#cAge .chip[data-v="p"]'); young.classList.toggle('lock', st.n === 'ava'); young.title = st.n === 'ava' ? tx('El nivel Avanzado es para 16-17 años', 'The Advanced level is for ages 16-17') : '';
+    const col = MODS[st.m][1], on = st.h / 12;
+    $$('#layers .layer').forEach((l, r) => {
+      l.classList.toggle('off', r >= on);
+      l.querySelectorAll('i').forEach((i) => { i.style.background = r < on ? col : ''; i.style.borderStyle = r < on ? 'solid' : 'dashed'; i.style.borderColor = r < on ? col : ''; i.dataset.o = r < on ? 1 - r * .22 : 1; i.style.opacity = i.dataset.o; });
+    });
+    if (anim && !reduce) gsap.fromTo(`#layers .layer:nth-child(-n+${on}) i`, { scale: .4, opacity: 0 }, { scale: 1, opacity: (k, el) => +el.dataset.o, duration: .45, ease: 'back.out(2)', stagger: .015 });
+    $('#calT').textContent = `${MODS[st.m][0]} · ${st.n === 'ini' ? tx('Inicial', 'Beginner') : tx('Avanzado', 'Advanced')}`;
+    $('#calS').textContent = `${st.h} ${tx('horas', 'hours')} · ${st.e === 'p' ? tx('14-15 años', 'ages 14-15') : tx('16-17 años', 'ages 16-17')}`;
+    $('#calN').innerHTML = st.e === 'p' ? tx('<b>Ritmo pausado:</b> menos píldoras por clase, con más tiempo para cada idea.', '<b>Steady pace:</b> fewer lessons per class, with more time for each idea.') : tx('<b>Ritmo ágil:</b> más píldoras por clase, mismo contenido.', '<b>Faster pace:</b> more lessons per class, same content.');
   }
-  function build() {
-    sync();
-    const w = $('#weeks'); w.innerHTML = '';
-    for (let i = 1; i <= 12; i++) w.insertAdjacentHTML('beforeend', `<div class="wk">${tx('S', 'W')}${i}</div>`);
-    const total = 12 * st.h, per = Math.floor(total / st.mods.length), seq = [];
-    st.mods.forEach((m, i) => { const n = i === st.mods.length - 1 ? total - per * (st.mods.length - 1) : per; for (let k = 0; k < n; k++) seq.push(m); });
-    const slots = [];
-    for (let r = 0; r < st.h; r++) for (let c = 0; c < 12; c++) { const s = document.createElement('div'); s.className = 'slot'; s.innerHTML = '<i></i>'; w.append(s); slots.push({ s, c, r }); }
-    const ord = slots.sort((a, b) => a.c - b.c || a.r - b.r);
-    ord.forEach((o, k) => { const m = MODS[seq[k]], i = o.s.firstChild; i.style.background = m[1]; i.style.color = m[2]; if (k === 0 || seq[k - 1] !== seq[k]) i.textContent = m[0]; });
-    gsap.to(ord.map((o) => o.s.firstChild), { scale: 1, opacity: 1, duration: .45, ease: 'back.out(2)', stagger: reduce ? 0 : .035 });
-    $('#calS').textContent = tx(`${total} sesiones · ${st.mods.length} programa${st.mods.length > 1 ? 's' : ''}`, `${total} sessions · ${st.mods.length} programme${st.mods.length > 1 ? 's' : ''}`);
-  }
-  $$('#presets .preset').forEach((p) => p.addEventListener('click', () => { $$('#presets .preset').forEach((x) => x.classList.toggle('on', x === p)); st.h = +p.dataset.h; st.mods = p.dataset.m.split(','); build(); }));
+  $$('#presets .preset').forEach((p) => p.addEventListener('click', () => { $$('#presets .preset').forEach((x) => x.classList.toggle('on', x === p)); Object.assign(st, { m: p.dataset.m, n: p.dataset.n, e: p.dataset.e, h: +p.dataset.h }); build(); }));
+  $$('#cLevel .chip').forEach((b) => b.addEventListener('click', () => { st.n = b.dataset.v; clearPreset(); build(); }));
+  $$('#cAge .chip').forEach((b) => b.addEventListener('click', () => { if (b.classList.contains('lock')) return; st.e = b.dataset.v; clearPreset(); build(); }));
   $$('#cHours .chip').forEach((b) => b.addEventListener('click', () => { st.h = +b.dataset.v; clearPreset(); build(); }));
-  sync();
-  ScrollTrigger.create({ trigger: '#colegio', start: 'top 60%', once: true, onEnter: build });
+  build(false);
+  ScrollTrigger.create({ trigger: '#colegio', start: 'top 60%', once: true, onEnter: () => build() });
 })();
 
 }
@@ -517,3 +504,38 @@ if ($('#blogFilters')) {
     gsap.fromTo(vis, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: .6, ease: 'expo.out', stagger: .06 });
   }));
 }
+
+/* ---------- testimonios: profesores / alumnos ---------- */
+document.querySelectorAll('.testi-tabs').forEach((tabsEl) => {
+  const sec = tabsEl.parentElement;
+  tabsEl.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => {
+    tabsEl.querySelectorAll('button').forEach((x) => { x.classList.toggle('on', x === b); x.setAttribute('aria-selected', x === b); });
+    sec.querySelectorAll('.testi-grid').forEach((g) => g.classList.toggle('on', g.dataset.g === b.dataset.g));
+    const vis = sec.querySelectorAll(`.testi-grid[data-g="${b.dataset.g}"] .tq`);
+    if (window.gsap) gsap.fromTo(vis, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .6, ease: 'expo.out', stagger: .07 });
+  }));
+});
+if (window.gsap && window.ScrollTrigger) {
+  document.querySelectorAll('.testi-grid.on, .team-faces, .story, .members').forEach((el) => gsap.from(el.children, { y: 50, opacity: 0, duration: 1, ease: 'expo.out', stagger: .08, scrollTrigger: { trigger: el, start: 'top 85%' } }));
+}
+
+/* ---------- testimonios (versión corta) ---------- */
+document.querySelectorAll('.ts').forEach((sec) => {
+  const qs = [...sec.querySelectorAll('.ts-qs blockquote')], dots = sec.querySelector('.ts-dots'), who = sec.querySelector('.ts-who b'), card = sec.querySelector('.ts-quote');
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let i = 0, timer;
+  const show = (k) => { i = k; qs.forEach((q, n) => q.classList.toggle('on', n === k)); [...dots.children].forEach((d, n) => d.classList.toggle('on', n === k)); who.textContent = qs[k].dataset.who; };
+  const restart = () => { clearInterval(timer); if (!still) timer = setInterval(() => show((i + 1) % qs.length), 6000); };
+  qs.forEach((_, k) => { const b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', `${sec.querySelector('.ts-qs').dataset.fr} ${k + 1}`); b.onclick = () => { show(k); restart(); }; dots.append(b); });
+  card.addEventListener('mouseenter', () => clearInterval(timer)); card.addEventListener('mouseleave', restart);
+  show(0); restart();
+  if (window.gsap && window.ScrollTrigger && !still) {
+    const sep = document.documentElement.lang === 'es' ? ',' : '.';
+    sec.querySelectorAll('[data-count]').forEach((el) => {
+      const to = +el.dataset.count, dec = +(el.dataset.dec || 0), o = { v: 0 };
+      el.textContent = (0).toFixed(dec).replace('.', sep);
+      gsap.to(o, { v: to, duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true }, onUpdate: () => (el.textContent = o.v.toFixed(dec).replace('.', sep)) });
+    });
+    gsap.from(sec.querySelectorAll('.ts-quote, .ts-num'), { y: 40, opacity: 0, duration: 1, ease: 'expo.out', stagger: .08, scrollTrigger: { trigger: sec, start: 'top 80%' } });
+  }
+});
