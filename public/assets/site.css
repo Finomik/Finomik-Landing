@@ -1017,8 +1017,11 @@ svg.i { width:1em; height:1em; fill:none; stroke:currentColor; stroke-width:2; s
 
 /* ---------- programas: cinco tarjetas + capas 12/24/36 h ---------- */
 .prog-cards.five { grid-template-columns:repeat(5,minmax(0,1fr)); }
-@media (max-width:1100px) { .prog-cards.five { grid-template-columns:repeat(3,minmax(0,1fr)); } }
-@media (max-width:700px) { .prog-cards.five { grid-template-columns:minmax(0,1fr); } .prog-cards.five .prgc { min-height:0; } }
+.prog-cards.five .prgc { padding:24px 20px; min-height:0; display:grid; grid-row:span 3; grid-template-rows:subgrid; row-gap:0; align-content:start; }
+.prog-cards.five .prgc i { margin-bottom:clamp(90px,9vw,130px); }
+.prog-cards.five .prgc b { margin-top:0; align-self:end; font-size:clamp(16px,1.3vw,21px); line-height:1.15; }
+@media (max-width:1100px) { .prog-cards.five { grid-template-columns:repeat(3,minmax(0,1fr)); } .prog-cards.five .prgc b { font-size:20px; } }
+@media (max-width:700px) { .prog-cards.five { grid-template-columns:minmax(0,1fr); } .prog-cards.five .prgc { min-height:0; } .prog-cards.five .prgc i { margin-bottom:16px; } }
 .layers { display:grid; gap:10px; }
 .layer { display:grid; grid-template-columns:minmax(96px,.22fr) minmax(0,1fr); gap:12px; align-items:center; transition:opacity .4s var(--ease); }
 .layer .ln b { display:block; font-weight:900; font-size:15px; } .layer .ln small { display:block; font-weight:700; font-size:12px; color:var(--fog); margin-top:2px; }
